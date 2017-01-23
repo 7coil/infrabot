@@ -35,7 +35,8 @@ socket.on("message", function (data){
 		if (!input[1] || !input[2] || !input[3]) {
 			return sendMessage("Usage: /ow <platform> <region> <tag>");
 		} else {
-			var owUrl = "http://ow-api.herokuapp.com/profile/" + input[1] + "/" + input[2] + "/" + input[3];
+			var input[3] = input[3].replace("#", "-");
+			var owUrl = "http://127.0.0.1:3000/profile/" + input[1] + "/" + input[2] + "/" + input[3];
 			request(owUrl, function (error, response, body) {
 				if (response.statusCode === 404) {
 					return sendMessage("No player tag was found.");
